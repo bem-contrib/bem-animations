@@ -1,0 +1,15 @@
+{
+  "name": "bem-animations",
+  "homepage": "https://github.com/bem-contrib/animations",
+  "authors": [
+    "Sergey Belozyorcev <nextdrift@gmail.com>"
+  ],
+  "description": "Easy and Fast in use animations (based on Animate.CSS)",
+  "main": "",
+  "keywords": [
+    "bem",
+    "animate",
+    "animations"
+  ],
+  "license": "MIT"
+}
