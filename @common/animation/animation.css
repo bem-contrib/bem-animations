@@ -1,0 +1,39 @@
+.animation {
+  animation-duration: 1s;
+  animation-fill-mode: both;
+}
+
+.animation_infinite {
+  animation-iteration-count: infinite;
+}
+
+.animation_hinge {
+  animation-duration: 2s;
+}
+
+.animation_flip_out-x,
+.animation_flip_out-y,
+.animation_bounce_in,
+.animation_bounce_out {
+  animation-duration: .75s;
+}
+
+.animation_speed_1 {
+  animation-duration: 2s;
+}
+
+.animation_speed_2 {
+  animation-duration: 1s;
+}
+
+.animation_speed_3 {
+  animation-duration: .7s;
+}
+
+.animation_speed_4 {
+  animation-duration: .5s;
+}
+
+.animation_speed_5 {
+  animation-duration: .2s;
+}
