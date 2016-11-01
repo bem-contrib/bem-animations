@@ -17,23 +17,3 @@
 .animation_type_bounce-out {
   animation-duration: .75s;
 }
-
-.animation_speed_1 {
-  animation-duration: 2s;
-}
-
-.animation_speed_2 {
-  animation-duration: 1s;
-}
-
-.animation_speed_3 {
-  animation-duration: .7s;
-}
-
-.animation_speed_4 {
-  animation-duration: .5s;
-}
-
-.animation_speed_5 {
-  animation-duration: .2s;
-}
