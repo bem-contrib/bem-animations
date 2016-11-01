@@ -1,6 +1,6 @@
 # How to contribute
 
-1.  Create an [issue](https://github.com/bem/bem-components/issues/new) with a proper description of changes.
+1.  Create an [issue](https://github.com/bem-contrib/bem-animations/issues/new) with a proper description of changes.
 2.  Determine the library version to make changes to.
 3.  Create a feature branch with the issue number and version (`issues/<issue_number>@v<version_number>`) based on a version branch.
     For example, for issue \#42 and version 2: `git checkout -b issues/42@v2`. If you are making changes to multiple versions, each of them must have its own feature branch.
