@@ -7,14 +7,14 @@
   animation-iteration-count: infinite;
 }
 
-.animation_hinge {
+.animation_type_hinge {
   animation-duration: 2s;
 }
 
-.animation_flip_out-x,
-.animation_flip_out-y,
-.animation_bounce_in,
-.animation_bounce_out {
+.animation_type_flip-out-x,
+.animation_type_flip-out-y,
+.animation_type_bounce-in,
+.animation_type_bounce-out {
   animation-duration: .75s;
 }
 

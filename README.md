@@ -36,7 +36,7 @@ var levels = [
 ```js
 ({
   mustDeps: [
-    {block: 'animation', mods: {fade: 'in-down'}}
+    {block: 'animation', mods: {type: 'fade-in-down'}}
   ]
 })
 ```
@@ -61,8 +61,8 @@ function (provide, bemDom, /* ...другие модули */ Animation) {
     onSetMod: {
       js: {
         'inited': function() {
-          this._animate = this.findMixedBlock(Animation);
-          this._animate.setMod('fade', 'in-down');
+          this._animation = this.findMixedBlock(Animation);
+          this._animation.setMod('type', 'fade-in-down');
         }
       }
     }
