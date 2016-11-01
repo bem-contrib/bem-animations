@@ -1,19 +1,19 @@
 .animation_delay_1 {
-    animation-delay: 2s;
+  animation-delay: .2s;
 }
 
 .animation_delay_2 {
-    animation-delay: 1s;
+  animation-delay: .5s;
 }
 
 .animation_delay_3 {
-    animation-delay: .7s;
+  animation-delay: .7s;
 }
 
 .animation_delay_4 {
-    animation-delay: .5s;
+  animation-delay: 1s;
 }
 
 .animation_delay_5 {
-    animation-delay: .2s;
+  animation-delay: 2s;
 }
