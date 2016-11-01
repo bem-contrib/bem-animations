@@ -1,0 +1,11 @@
+.animation_direction_reverse {
+    animation-direction: reverse;
+}
+
+.animation_direction_alternate {
+    animation-direction: alternate;
+}
+
+.animation_direction_alternate-reverse {
+    animation-direction: alternate-reverse;
+}
