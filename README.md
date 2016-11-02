@@ -1,4 +1,5 @@
-# Анимации по БЭМ [WIP]
+![bem-animations](https://cloud.githubusercontent.com/assets/1655916/19938823/69484340-a137-11e6-8560-dc3da4fda6b0.png)
+
 Библиотека готовых CSS-анимаций для БЭМ-платформы, основанная на [Animate.CSS](https://github.com/daneden/animate.css). Портирована для тех, кто не хочет каждый раз настраивать анимации вручную.
 
 Прятной разработки! ;)
