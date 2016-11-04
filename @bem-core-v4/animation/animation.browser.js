@@ -30,26 +30,26 @@ modules.define('animation', ['i-bem-dom'], function(provide, bemDom) {
       }
 
       if (callback.constructor === Function) {
-        this._singleEvent(this._prefixed('AnimationEnd'), callback, hide);
+        this._singleEvent('AnimationEnd', callback, hide);
         return this;
       }
 
       if (callback.constructor === Object) {
         if (callback.onStart) {
-          this._singleEvent(this._prefixed('AnimationStart'), callback.onStart, hide);
+          this._singleEvent('AnimationStart', callback.onStart, hide);
         }
         if (callback.onEnd) {
-          this._singleEvent(this._prefixed('AnimationEnd'), callback.onEnd, hide);
+          this._singleEvent('AnimationEnd', callback.onEnd, hide);
         }
         if (callback.onIteration) {
-          this._singleEvent(this._prefixed('AnimationIteration'), callback.onIteration, hide);
+          this._singleEvent('AnimationIteration', callback.onIteration, hide);
         }
 
         return this;
       }
 
       // default behavior
-      this._singleEvent(this._prefixed('AnimationEnd'), false, hide);
+      this._singleEvent('AnimationEnd', false, hide);
       return this;
     },
 
@@ -77,6 +77,7 @@ modules.define('animation', ['i-bem-dom'], function(provide, bemDom) {
      * @return {Bem}               block instance
      */
     _singleEvent: function(event, callback, hide) {
+      const prefixedEvent = this._prefixed(event);
       this.domElem.on(event, () => {
         this.domElem.off(event);
         if (hide === true) {
