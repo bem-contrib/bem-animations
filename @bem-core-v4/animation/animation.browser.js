@@ -54,6 +54,22 @@ modules.define('animation', ['i-bem-dom'], function(provide, bemDom) {
     },
 
     /**
+     * Reset all block mods and delete inline styles
+     * @return {Bem} this block
+     */
+    reset: function() {
+      for (const mod in this._modCache) {
+        if (!this._modCache.hasOwnProperty(mod) || mod === 'js') {
+          continue;
+        }
+        this.delMod(mod);
+      }
+
+      this.domElem.css('display', '');
+      return this;
+    },
+
+    /**
      * Function for run sindle event
      * @param  {String}   event    target event
      * @param  {Function} callback callback function
