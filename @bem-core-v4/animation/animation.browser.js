@@ -12,44 +12,55 @@ modules.define('animation', ['i-bem-dom'], function(provide, bemDom) {
 
     /**
      * Start animation
-     * @param  {String}   type     name of type animation
-     * @param  {Function} callback callback for events
-     * @param  {Boolean}  hide     flag for hide
-     * @return {Bem}               block instance
+     * @param  {String|Object}   decl     name of type animation or decl animate
+     * @param  {Function}        callback callback for events
+     * @param  {Boolean}         hide     flag for hide
+     * @return {Bem}                      block instance
      */
-    start: function(type, callback, hide) {
+    start: function(decl, callback, hide) {
       this.domElem.show();
-      this.setMod('type', type);
+      this.duration('').delay('');
 
-      if (callback === undefined) {
-        return this;
-      }
+      // For declaration animation
+      if (decl.constructor === Object) {
+        this.setMod('type', decl.type);
 
-      if (callback.constructor === Boolean) {
-        hide = callback;
-      }
-
-      if (callback.constructor === Function) {
-        this._singleEvent('AnimationEnd', callback, hide);
-        return this;
-      }
-
-      if (callback.constructor === Object) {
-        if (callback.onStart) {
-          this._singleEvent('AnimationStart', callback.onStart, hide);
+        if (decl.duration !== undefined) {
+          this.duration(decl.duration);
         }
-        if (callback.onEnd) {
-          this._singleEvent('AnimationEnd', callback.onEnd, hide);
+        if (decl.delay !== undefined) {
+          this.delay(decl.delay);
         }
-        if (callback.onIteration) {
-          this._singleEvent('AnimationIteration', callback.onIteration, hide);
+        if (decl.callbacks !== undefined) {
+          this._setCallbacks(decl.callbacks, decl.hide);
         }
-
-        return this;
+      } else { // For string animation
+        this.setMod('type', decl);
       }
 
-      // default behavior
-      this._singleEvent('AnimationEnd', false, hide);
+      if (callback !== undefined) {
+        this._setCallbacks(callback, hide);
+      }
+      return this;
+    },
+
+    /**
+     * Set inline css property for duration
+     * @param  {String} time duration
+     * @return {Bem}         block instance
+     */
+    duration: function(time) {
+      this._cssProperty('animationDuration', time);
+      return this;
+    },
+
+    /**
+     * Set inline css property for delay
+     * @param  {String} time delay
+     * @return {Bem}         block instance
+     */
+    delay: function(time) {
+      this._cssProperty('animationDelay', time);
       return this;
     },
 
@@ -65,7 +76,62 @@ modules.define('animation', ['i-bem-dom'], function(provide, bemDom) {
         this.delMod(mod);
       }
 
-      this.domElem.css('display', '');
+      this
+        .duration('')
+        .delay('')
+        .domElem.css('display', '');
+
+      return this;
+    },
+
+    /**
+     * Function for set callbacks on animation points
+     * @param  {Object}  callbacks function or object with callbacks
+     * @param  {Boolean} hide      flag for hide block after animation
+     * @return {Bem}               block instance
+     */
+    _setCallbacks: function(callbacks, hide) {
+      if (callbacks.constructor === Boolean) {
+        hide = callbacks;
+      }
+
+      if (callbacks.constructor === Function) {
+        this._singleEvent('AnimationEnd', callbacks, hide);
+        return this;
+      }
+
+      if (callbacks.constructor === Object) {
+        if (callbacks.onStart) {
+          this._singleEvent('AnimationStart', callbacks.onStart);
+        }
+        if (callbacks.onIteration) {
+          this._singleEvent('AnimationIteration', callbacks.onIteration);
+        }
+        if (callbacks.onEnd) {
+          this._singleEvent('AnimationEnd', callbacks.onEnd, hide);
+        }
+        return this;
+      }
+
+      // default behavior
+      this._singleEvent('AnimationEnd', false, hide);
+      return this;
+    },
+
+    /**
+     * Set inline css properties with prefixes
+     * @param  {String} prop  property name
+     * @param  {String} value property value
+     * @return {Bem}          block instance
+     */
+    _cssProperty: function(prop, value) {
+      let upperProp = prop.charAt(0).toUpperCase() + prop.slice(1);
+      let prefixes = ['webkit', 'moz', 'o', 'ms'];
+      prefixes.forEach(prefix => {
+        this.domElem[0].style[prefix + upperProp] = value;
+      });
+      this.domElem[0].style[prop] = value;
+
       return this;
     },
 
