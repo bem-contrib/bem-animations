@@ -78,8 +78,8 @@ modules.define('animation', ['i-bem-dom'], function(provide, bemDom) {
      */
     _singleEvent: function(event, callback, hide) {
       const prefixedEvent = this._prefixed(event + '.' + new Date().getTime());
-      this.domElem.on(event, () => {
-        this.domElem.off(event);
+      this.domElem.on(prefixedEvent, () => {
+        this.domElem.off(prefixedEvent);
         if (hide === true) {
           this.domElem.hide();
         }
