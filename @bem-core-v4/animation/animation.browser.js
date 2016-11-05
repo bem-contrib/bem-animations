@@ -45,6 +45,27 @@ modules.define('animation', ['i-bem-dom'], function(provide, bemDom) {
     },
 
     /**
+     * Queue animations
+     * @param  {Array}    list     animations list
+     * @param  {Function} callback run function after end queue
+     * @return {Bem}               block instance
+     */
+    queue: function(list, callback) {
+      let first = list.shift();
+      if (first === undefined && callback !== undefined) {
+        callback.call();
+      } else {
+        if (first.constructor === Function) {
+          first.call();
+          this.queue(list, callback);
+          return;
+        }
+        this.start(first, () => this.queue(list, callback));
+      }
+      return this;
+    },
+
+    /**
      * Set inline css property for duration
      * @param  {String} time duration
      * @return {Bem}         block instance
