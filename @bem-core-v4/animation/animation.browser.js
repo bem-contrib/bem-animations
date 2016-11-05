@@ -54,16 +54,20 @@ modules.define('animation', ['i-bem-dom'], function(provide, bemDom) {
      */
     queue: function(list, callback) {
       let first = list.shift();
-      if (first === undefined && callback !== undefined) {
-        callback.call();
-      } else {
-        if (first.constructor === Function) {
-          first.call();
-          this.queue(list, callback);
-          return;
+      if (first === undefined) {
+        if (callback !== undefined) {
+          callback.call();
         }
-        this.start(first, () => this.queue(list, callback));
+        return this;
       }
+
+      if (first.constructor === Function) {
+        first.call();
+        this.queue(list, callback);
+        return;
+      }
+
+      this.start(first, () => this.queue(list, callback));
       return this;
     },
 
