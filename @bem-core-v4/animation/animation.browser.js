@@ -31,9 +31,7 @@ modules.define('animation', ['i-bem-dom'], function(provide, bemDom) {
         if (decl.delay !== undefined) {
           this.delay(decl.delay);
         }
-        if (decl.callbacks !== undefined) {
-          this._setCallbacks(decl.callbacks, decl.hide);
-        }
+        this._setCallbacks(decl.callbacks, decl.hide);
       } else { // For string animation
         this.setMod('type', decl);
       }
@@ -112,16 +110,16 @@ modules.define('animation', ['i-bem-dom'], function(provide, bemDom) {
      * @return {Bem}               block instance
      */
     _setCallbacks: function(callbacks, hide) {
-      if (callbacks.constructor === Boolean) {
+      if (callbacks && callbacks.constructor === Boolean) {
         hide = callbacks;
       }
 
-      if (callbacks.constructor === Function) {
+      if (callbacks && callbacks.constructor === Function) {
         this._singleEvent('AnimationEnd', callbacks, hide);
         return this;
       }
 
-      if (callbacks.constructor === Object) {
+      if (callbacks && callbacks.constructor === Object) {
         if (callbacks.onStart) {
           this._singleEvent('AnimationStart', callbacks.onStart);
         }
