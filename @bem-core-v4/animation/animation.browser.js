@@ -31,7 +31,11 @@ modules.define('animation', ['i-bem-dom'], function(provide, bemDom) {
         if (decl.delay !== undefined) {
           this.delay(decl.delay);
         }
-        this._setCallbacks(decl.callbacks, decl.hide);
+        this._setCallbacks({
+          onStart: decl.onStart,
+          onEnd: decl.onEnd,
+          onIteration: decl.onIteration
+        }, decl.hide);
       } else { // For string animation
         this.setMod('type', decl);
       }
