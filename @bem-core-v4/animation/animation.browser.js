@@ -112,6 +112,24 @@ modules.define('animation', ['i-bem-dom'], function(provide, bemDom) {
     },
 
     /**
+     * Pause css animation
+     * @return {Bem} block instance
+     */
+    pause: function() {
+      this.setMod('paused', true);
+      return this;
+    },
+
+    /**
+     * Continue paused css animation
+     * @return {Bem} block instance
+     */
+    continue: function() {
+      this.delMod('paused');
+      return this;
+    },
+
+    /**
      * Function for set callbacks on animation points
      * @param  {Object}  callbacks function or object with callbacks
      * @param  {Boolean} hide      flag for hide block after animation

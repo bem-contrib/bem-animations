@@ -17,3 +17,7 @@
 .animation_type_bounce-out {
   animation-duration: .75s;
 }
+
+.animation_paused {
+  animation-play-state: paused
+}
