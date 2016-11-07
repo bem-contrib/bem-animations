@@ -113,8 +113,7 @@ modules.define('animation', ['i-bem-dom'], function(provide, bemDom) {
 
     /**
      * Pause css animation
-     * @param  none
-     * @return {Bem}         block instance
+     * @return {Bem} block instance
      */
     pause: function() {
       this.setMod('paused', true);
@@ -123,8 +122,7 @@ modules.define('animation', ['i-bem-dom'], function(provide, bemDom) {
 
     /**
      * Continue paused css animation
-     * @param  none
-     * @return {Bem}         block instance
+     * @return {Bem} block instance
      */
     continue: function() {
       this.delMod('paused');
