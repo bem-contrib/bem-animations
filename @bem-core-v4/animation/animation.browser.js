@@ -127,7 +127,7 @@ modules.define('animation', ['i-bem-dom'], function(provide, bemDom) {
      * @return {Bem}         block instance
      */
     continue: function() {
-      this.delMod('paused', true);
+      this.delMod('paused');
       return this;
     },
 
