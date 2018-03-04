@@ -1,0 +1,8 @@
+{
+  "name": "bem-animations",
+  "version": "0.1.0",
+  "repository": "https://github.com/bem-contrib/animations",
+  "author": "Sergey Belozyorcev <nextdrift@gmail.com>",
+  "license": "MIT",
+  "dependencies": {}
+}
