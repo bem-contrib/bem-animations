@@ -60,7 +60,7 @@ provide(bemDom.declBlock(this.name, {
     onSetMod : {
         js : {
             inited : function() {
-                cosnt anim = this.findMixedBlock(Animation);
+                const anim = this.findMixedBlock(Animation);
                 
                 anim.start('fade-in-down');
             }
